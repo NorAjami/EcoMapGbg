@@ -32,7 +32,7 @@ The project aims to reduce waste and support local sustainability by crowd-sourc
 | Area          | Technology              |
 |---------------|--------------------------|
 | Backend       | ASP.NET Core, C#, Clean Architecture, DDD |
-| Frontend      | React *(or Razor Pages / Blazor)* |
+| Frontend      | Blazor |
 | Database      | MongoDB                  |
 | Maps          | Leaflet.js or Google Maps API |
 | Testing       | xUnit, Moq, FluentAssertions |
@@ -74,7 +74,7 @@ EcoMapGbg/
 ### Prerequisites
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/)
-- [Node.js & npm](https://nodejs.org/) (if using React frontend)
+- Blazor app
 - [MongoDB](https://www.mongodb.com/) or Docker
 - Git
 
