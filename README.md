@@ -2,7 +2,7 @@
 ## 🌱 Connecting Gothenburg with reuse spots, second-hand shops, and repair hubs for a more circular city. 🌱
 
 
-```markdown
+
 # ♻️ ReuseMap (Återbrukskartan)
 
 > A location-based web app for promoting reuse, sharing, and circular consumption in Gothenburg.
