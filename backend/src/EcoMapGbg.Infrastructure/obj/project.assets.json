@@ -1,11 +1,49 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "EcoMapGbg.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "EcoMapGbg.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EcoMapGbg.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EcoMapGbg.Application.dll": {}
+        }
+      },
+      "EcoMapGbg.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/EcoMapGbg.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EcoMapGbg.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "EcoMapGbg.Application/1.0.0": {
+      "type": "project",
+      "path": "../EcoMapGbg.Application/EcoMapGbg.Application.csproj",
+      "msbuildProject": "../EcoMapGbg.Application/EcoMapGbg.Application.csproj"
+    },
+    "EcoMapGbg.Domain/1.0.0": {
+      "type": "project",
+      "path": "../EcoMapGbg.Domain/EcoMapGbg.Domain.csproj",
+      "msbuildProject": "../EcoMapGbg.Domain/EcoMapGbg.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "EcoMapGbg.Application >= 1.0.0",
+      "EcoMapGbg.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\97noraja\\.nuget\\packages\\": {},
@@ -38,7 +76,14 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\97noraja\\EcoMapGbg\\backend\\src\\EcoMapGbg.Application\\EcoMapGbg.Application.csproj": {
+              "projectPath": "C:\\Users\\97noraja\\EcoMapGbg\\backend\\src\\EcoMapGbg.Application\\EcoMapGbg.Application.csproj"
+            },
+            "C:\\Users\\97noraja\\EcoMapGbg\\backend\\src\\EcoMapGbg.Domain\\EcoMapGbg.Domain.csproj": {
+              "projectPath": "C:\\Users\\97noraja\\EcoMapGbg\\backend\\src\\EcoMapGbg.Domain\\EcoMapGbg.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

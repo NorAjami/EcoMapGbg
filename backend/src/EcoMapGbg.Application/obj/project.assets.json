@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net9.0": {}
+    "net9.0": {
+      "EcoMapGbg.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/EcoMapGbg.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EcoMapGbg.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "EcoMapGbg.Domain/1.0.0": {
+      "type": "project",
+      "path": "../EcoMapGbg.Domain/EcoMapGbg.Domain.csproj",
+      "msbuildProject": "../EcoMapGbg.Domain/EcoMapGbg.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net9.0": []
+    "net9.0": [
+      "EcoMapGbg.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\97noraja\\.nuget\\packages\\": {},
@@ -38,7 +57,11 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\97noraja\\EcoMapGbg\\backend\\src\\EcoMapGbg.Domain\\EcoMapGbg.Domain.csproj": {
+              "projectPath": "C:\\Users\\97noraja\\EcoMapGbg\\backend\\src\\EcoMapGbg.Domain\\EcoMapGbg.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

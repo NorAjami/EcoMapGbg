@@ -33,6 +33,43 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "EcoMapGbg.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "EcoMapGbg.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EcoMapGbg.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EcoMapGbg.Application.dll": {}
+        }
+      },
+      "EcoMapGbg.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "compile": {
+          "bin/placeholder/EcoMapGbg.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EcoMapGbg.Domain.dll": {}
+        }
+      },
+      "EcoMapGbg.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "EcoMapGbg.Application": "1.0.0",
+          "EcoMapGbg.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EcoMapGbg.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EcoMapGbg.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -67,10 +104,27 @@
         "microsoft.openapi.1.6.17.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
+    },
+    "EcoMapGbg.Application/1.0.0": {
+      "type": "project",
+      "path": "../EcoMapGbg.Application/EcoMapGbg.Application.csproj",
+      "msbuildProject": "../EcoMapGbg.Application/EcoMapGbg.Application.csproj"
+    },
+    "EcoMapGbg.Domain/1.0.0": {
+      "type": "project",
+      "path": "../EcoMapGbg.Domain/EcoMapGbg.Domain.csproj",
+      "msbuildProject": "../EcoMapGbg.Domain/EcoMapGbg.Domain.csproj"
+    },
+    "EcoMapGbg.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../EcoMapGbg.Infrastructure/EcoMapGbg.Infrastructure.csproj",
+      "msbuildProject": "../EcoMapGbg.Infrastructure/EcoMapGbg.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "EcoMapGbg.Application >= 1.0.0",
+      "EcoMapGbg.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 9.0.0"
     ]
   },
@@ -105,7 +159,14 @@
       "frameworks": {
         "net9.0": {
           "targetAlias": "net9.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\97noraja\\EcoMapGbg\\backend\\src\\EcoMapGbg.Application\\EcoMapGbg.Application.csproj": {
+              "projectPath": "C:\\Users\\97noraja\\EcoMapGbg\\backend\\src\\EcoMapGbg.Application\\EcoMapGbg.Application.csproj"
+            },
+            "C:\\Users\\97noraja\\EcoMapGbg\\backend\\src\\EcoMapGbg.Infrastructure\\EcoMapGbg.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\97noraja\\EcoMapGbg\\backend\\src\\EcoMapGbg.Infrastructure\\EcoMapGbg.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
