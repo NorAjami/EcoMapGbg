@@ -1,0 +1,344 @@
+@page "/"
+@using EcoMapGbg.Web.Models
+@using EcoMapGbg.Web.Services
+@inject IEcoMapApiClient ApiClient
+@inject IJSRuntime JSRuntime
+
+<PageTitle>🌱 EcoMapGBG</PageTitle>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <header class="text-center mb-4">
+                <h1 class="text-success display-4">🌱 EcoMapGBG</h1>
+                <p class="lead">Hitta återbruksställen i Göteborg</p>
+            </header>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-8">
+            <div class="d-flex gap-2 flex-wrap align-items-center">
+                <select class="form-select" style="width: auto;" @bind="selectedType">
+                    <option value="">🌍 Alla typer</option>
+                    @foreach (var type in Enum.GetValues<LocationType>())
+                    {
+                        <option value="@type">@GetTypeIcon(type) @GetTypeDisplayName(type)</option>
+                    }
+                </select>
+
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" @bind="onlyFree" id="onlyFreeCheck">
+                    <label class="form-check-label" for="onlyFreeCheck">
+                        🆓 Endast gratis
+                    </label>
+                </div>
+
+                <button class="btn btn-primary" @onclick="FindNearbyLocations" disabled="@isLoading">
+                    @if (isLoading)
+                    {
+                        <span class="spinner-border spinner-border-sm me-2"></span>
+                    }
+                    📍 Hitta närliggande
+                </button>
+
+                <button class="btn btn-success" @onclick="ShowAddLocationModal">
+                    ➕ Lägg till plats
+                </button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="text-end">
+                <small class="text-muted">
+                    @locations.Count platser visas
+                    @if (userLocation != null)
+                    {
+                        <span class="text-success">• 📍 Position hittad</span>
+                    }
+                </small>
+            </div>
+        </div>
+    </div>
+
+    @if (errorMessage != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show">
+            <strong>Fel:</strong> @errorMessage
+            <button type="button" class="btn-close" @onclick="() => errorMessage = null"></button>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body p-0">
+                    <div id="map" style="height: 500px; border-radius: 8px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Location Modal -->
+<div class="modal fade" id="addLocationModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">🌱 Lägg till ny ecovärt plats</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <EditForm Model="newLocation" OnValidSubmit="HandleAddLocation">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary class="alert alert-danger" />
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">📍 Namn på platsen</label>
+                                <InputText class="form-control" @bind-Value="newLocation.Name"
+                                          placeholder="t.ex. Myrorna Majorna" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">🏠 Adress</label>
+                                <InputText class="form-control" @bind-Value="newLocation.Address"
+                                          placeholder="t.ex. Tredje Långgatan 15" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">🏪 Typ av plats</label>
+                                <InputSelect class="form-select" @bind-Value="newLocation.Type">
+                                    <option value="">Välj typ</option>
+                                    @foreach (var type in Enum.GetValues<LocationType>())
+                                    {
+                                        <option value="@type">@GetTypeIcon(type) @GetTypeDisplayName(type)</option>
+                                    }
+                                </InputSelect>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">💰 Pris</label>
+                                <div class="form-check mt-2">
+                                    <InputCheckbox class="form-check-input" @bind-Value="newLocation.IsFree" />
+                                    <label class="form-check-label">🆓 Gratis</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">📝 Beskrivning</label>
+                        <InputTextArea class="form-control" rows="3" @bind-Value="newLocation.Description"
+                                      placeholder="Berätta mer om platsen..." />
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-success btn-lg" disabled="@isSubmitting">
+                            @if (isSubmitting)
+                            {
+                                <span class="spinner-border spinner-border-sm me-2"></span>
+                            }
+                            🌱 Lägg till plats
+                        </button>
+                    </div>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<LocationSummaryDto> locations = new();
+    private LocationType? selectedType;
+    private bool onlyFree = false;
+    private CreateLocationRequest newLocation = new();
+    private UserLocation? userLocation;
+    private bool isLoading = false;
+    private bool isSubmitting = false;
+    private string? errorMessage;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await InitializeMap();
+            await LoadAllLocations();
+        }
+    }
+
+    private async Task InitializeMap()
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("initializeMap");
+
+            // Get user location
+            userLocation = await JSRuntime.InvokeAsync<UserLocation?>("getUserLocation");
+            if (userLocation != null)
+            {
+                await JSRuntime.InvokeVoidAsync("addUserMarker", userLocation.Latitude, userLocation.Longitude);
+                StateHasChanged();
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Kunde inte initialisera kartan: {ex.Message}";
+            StateHasChanged();
+        }
+    }
+
+    private async Task LoadAllLocations()
+    {
+        try
+        {
+            isLoading = true;
+            StateHasChanged();
+
+            locations = await ApiClient.GetAllLocationsAsync();
+
+            // Apply frontend filters
+            var filtered = FilterLocations(locations);
+            await JSRuntime.InvokeVoidAsync("displayLocations", filtered);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Kunde inte ladda platser: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private async Task FindNearbyLocations()
+    {
+        if (userLocation == null)
+        {
+            errorMessage = "Kunde inte hitta din position. Kontrollera att du tillåter platsåtkomst.";
+            StateHasChanged();
+            return;
+        }
+
+        try
+        {
+            isLoading = true;
+            StateHasChanged();
+
+            var request = new GetNearbyLocationsRequest
+            {
+                Latitude = userLocation.Latitude,
+                Longitude = userLocation.Longitude,
+                RadiusKm = 5,
+                Type = selectedType,
+                OnlyFree = onlyFree ? true : null
+            };
+
+            var response = await ApiClient.GetNearbyLocationsAsync(request);
+            locations = response.Locations;
+
+            await JSRuntime.InvokeVoidAsync("displayLocations", locations);
+            errorMessage = null;
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Kunde inte hitta närliggande platser: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+            StateHasChanged();
+        }
+    }
+
+    private List<LocationSummaryDto> FilterLocations(List<LocationSummaryDto> allLocations)
+    {
+        var filtered = allLocations.AsEnumerable();
+
+        if (selectedType.HasValue)
+            filtered = filtered.Where(l => l.Type == selectedType.ToString());
+
+        if (onlyFree)
+            filtered = filtered.Where(l => l.IsFree);
+
+        return filtered.ToList();
+    }
+
+    private async Task ShowAddLocationModal()
+    {
+        newLocation = new CreateLocationRequest();
+        await JSRuntime.InvokeVoidAsync("showModal", "addLocationModal");
+    }
+
+    private async Task HandleAddLocation()
+    {
+        if (userLocation == null)
+        {
+            errorMessage = "Vi behöver din position för att lägga till platsen";
+            return;
+        }
+
+        try
+        {
+            isSubmitting = true;
+            StateHasChanged();
+
+            newLocation.Latitude = userLocation.Latitude;
+            newLocation.Longitude = userLocation.Longitude;
+
+            await ApiClient.CreateLocationAsync(newLocation);
+
+            await JSRuntime.InvokeVoidAsync("hideModal", "addLocationModal");
+            await JSRuntime.InvokeVoidAsync("showSuccessToast", "Plats tillagd! Tack för ditt bidrag! 🌱");
+
+            await LoadAllLocations(); // Refresh the map
+            errorMessage = null;
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Kunde inte lägga till plats: {ex.Message}";
+        }
+        finally
+        {
+            isSubmitting = false;
+            StateHasChanged();
+        }
+    }
+
+    private string GetTypeDisplayName(LocationType type) => type switch
+    {
+        LocationType.SecondHand => "Second hand-butik",
+        LocationType.FreeShop => "Gratisbutik",
+        LocationType.RecyclingCenter => "Återvinningscentral",
+        LocationType.BikeWorkshop => "Cykelverkstad",
+        LocationType.ClothingSwap => "Klädswap",
+        LocationType.SharingService => "Delningsekonomi",
+        LocationType.RepairCafe => "Repair Café",
+        _ => type.ToString()
+    };
+
+    private string GetTypeIcon(LocationType type) => type switch
+    {
+        LocationType.SecondHand => "🛍️",
+        LocationType.FreeShop => "🎁",
+        LocationType.RecyclingCenter => "♻️",
+        LocationType.BikeWorkshop => "🚲",
+        LocationType.ClothingSwap => "👕",
+        LocationType.SharingService => "🤝",
+        LocationType.RepairCafe => "🔧",
+        _ => "📍"
+    };
+
+    public class UserLocation
+    {
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+    }
+}
