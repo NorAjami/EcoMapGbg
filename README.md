@@ -45,26 +45,25 @@ The project aims to reduce waste and support local sustainability by crowd-sourc
 
 ```
 
-ReuseMap/
-│
-├── backend/                     # Clean Architecture (DDD)
-│   ├── src/
-│   │   ├── ReuseMap.API/
-│   │   ├── ReuseMap.Application/
-│   │   ├── ReuseMap.Domain/
-│   │   └── ReuseMap.Infrastructure/
-│   └── tests/
-│       ├── ReuseMap.UnitTests/
-│       └── ReuseMap.IntegrationTests/
-│
-├── frontend/                    # React / Razor / Blazor (optional)
-│   └── public/
-│   └── src/
-│
-├── docs/                        # SDD, diagrams, planning
-├── docker-compose.yml           # Optional (MongoDB, frontend, API)
-├── ReuseMap.sln
-└── README.md
+EcoMapGbg/
+├── .gitignore
+├── README.md
+├── docker-compose.yml      #  MongoDB
+├── backend/                # Single ASP.NET Core project
+│   ├── EcoMapGbg.csproj
+│   ├── Program.cs
+│   ├── Models/             # Simple models
+│   │   └── Location.cs
+│   ├── Controllers/
+│   │   └── LocationsController.cs
+│   ├── Data/
+│   │   └── LocationRepository.cs
+│   └── wwwroot/           # Static frontend files
+│       ├── index.html
+│       ├── app.js
+│       └── style.css
+└── docs/
+    └── mvp-features.md
 
 ````
 
