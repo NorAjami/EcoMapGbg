@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EcoMapGbg.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+183c6c5d77730189f89095aa3571a62e014c72ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ade5812dff2cf4a1220f826d7c13331ca2946429")]
 [assembly: System.Reflection.AssemblyProductAttribute("EcoMapGbg.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EcoMapGbg.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

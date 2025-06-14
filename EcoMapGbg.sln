@@ -1,0 +1,88 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.Common", "EcoMapGbg.Common\EcoMapGbg.Common.csproj", "{B9B100F9-4732-EA4C-6E5A-80BCF8A7B5BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.IntegrationTests", "EcoMapGbg.IntegrationTests\EcoMapGbg.IntegrationTests.csproj", "{130C5AD1-E9FB-5C18-4068-0C8EEFFDF5F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.UnitTests", "EcoMapGbg.UnitTests\EcoMapGbg.UnitTests.csproj", "{6302DA57-83AF-5D95-A726-967034C41E7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "backend", "backend", "{1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0F9113EE-888A-26D2-68B0-4A7D0A2A8745}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.API", "backend\src\EcoMapGbg.API\EcoMapGbg.API.csproj", "{B11C90C4-338B-7E86-3BDA-6621A5D34D8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.Application", "backend\src\EcoMapGbg.Application\EcoMapGbg.Application.csproj", "{FF8FDB58-C7AB-88A8-CE4C-5C76A728EFEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.Domain", "backend\src\EcoMapGbg.Domain\EcoMapGbg.Domain.csproj", "{18BC2C00-AE89-EA91-7516-B0DB3890BB6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.Infrastructure", "backend\src\EcoMapGbg.Infrastructure\EcoMapGbg.Infrastructure.csproj", "{573ECE2A-BBD6-43F3-9706-2076EAFDDDAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F57642F3-C37C-D174-720E-6A6AAD5BEE22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.IntegrationTests", "backend\tests\EcoMapGbg.IntegrationTests\EcoMapGbg.IntegrationTests.csproj", "{26036F74-AFD7-8AB9-56BF-781D70D4F76A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.UnitTests", "backend\tests\EcoMapGbg.UnitTests\EcoMapGbg.UnitTests.csproj", "{4673F529-E211-3F82-480A-1551DDBA144D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9B100F9-4732-EA4C-6E5A-80BCF8A7B5BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9B100F9-4732-EA4C-6E5A-80BCF8A7B5BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9B100F9-4732-EA4C-6E5A-80BCF8A7B5BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9B100F9-4732-EA4C-6E5A-80BCF8A7B5BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{130C5AD1-E9FB-5C18-4068-0C8EEFFDF5F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{130C5AD1-E9FB-5C18-4068-0C8EEFFDF5F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{130C5AD1-E9FB-5C18-4068-0C8EEFFDF5F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{130C5AD1-E9FB-5C18-4068-0C8EEFFDF5F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6302DA57-83AF-5D95-A726-967034C41E7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6302DA57-83AF-5D95-A726-967034C41E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6302DA57-83AF-5D95-A726-967034C41E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6302DA57-83AF-5D95-A726-967034C41E7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B11C90C4-338B-7E86-3BDA-6621A5D34D8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B11C90C4-338B-7E86-3BDA-6621A5D34D8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B11C90C4-338B-7E86-3BDA-6621A5D34D8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B11C90C4-338B-7E86-3BDA-6621A5D34D8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF8FDB58-C7AB-88A8-CE4C-5C76A728EFEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF8FDB58-C7AB-88A8-CE4C-5C76A728EFEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF8FDB58-C7AB-88A8-CE4C-5C76A728EFEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF8FDB58-C7AB-88A8-CE4C-5C76A728EFEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18BC2C00-AE89-EA91-7516-B0DB3890BB6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18BC2C00-AE89-EA91-7516-B0DB3890BB6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18BC2C00-AE89-EA91-7516-B0DB3890BB6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18BC2C00-AE89-EA91-7516-B0DB3890BB6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{573ECE2A-BBD6-43F3-9706-2076EAFDDDAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{573ECE2A-BBD6-43F3-9706-2076EAFDDDAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{573ECE2A-BBD6-43F3-9706-2076EAFDDDAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{573ECE2A-BBD6-43F3-9706-2076EAFDDDAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26036F74-AFD7-8AB9-56BF-781D70D4F76A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26036F74-AFD7-8AB9-56BF-781D70D4F76A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26036F74-AFD7-8AB9-56BF-781D70D4F76A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26036F74-AFD7-8AB9-56BF-781D70D4F76A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4673F529-E211-3F82-480A-1551DDBA144D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4673F529-E211-3F82-480A-1551DDBA144D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4673F529-E211-3F82-480A-1551DDBA144D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4673F529-E211-3F82-480A-1551DDBA144D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0F9113EE-888A-26D2-68B0-4A7D0A2A8745} = {1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}
+		{B11C90C4-338B-7E86-3BDA-6621A5D34D8B} = {0F9113EE-888A-26D2-68B0-4A7D0A2A8745}
+		{FF8FDB58-C7AB-88A8-CE4C-5C76A728EFEC} = {0F9113EE-888A-26D2-68B0-4A7D0A2A8745}
+		{18BC2C00-AE89-EA91-7516-B0DB3890BB6A} = {0F9113EE-888A-26D2-68B0-4A7D0A2A8745}
+		{573ECE2A-BBD6-43F3-9706-2076EAFDDDAA} = {0F9113EE-888A-26D2-68B0-4A7D0A2A8745}
+		{F57642F3-C37C-D174-720E-6A6AAD5BEE22} = {1AE8ACA6-933B-BF2A-3671-3E2EAC007D16}
+		{26036F74-AFD7-8AB9-56BF-781D70D4F76A} = {F57642F3-C37C-D174-720E-6A6AAD5BEE22}
+		{4673F529-E211-3F82-480A-1551DDBA144D} = {F57642F3-C37C-D174-720E-6A6AAD5BEE22}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF07E468-226E-4C5D-9E98-61A76EF3A64D}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,44 @@
+# 👉 Dotnet build folders
+bin/
+obj/
+
+# 👉 User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# 👉 VS Code / VS
+.vscode/
+.vs/
+
+# 👉 Secrets & configs
+*.env
+*.env.*
+secrets.json
+appsettings.*.json
+!appsettings.Development.json.example
+
+# 👉 Logs
+*.log
+logs/
+
+# 👉 Node (frontend, Leaflet install via npm)
+node_modules/
+npm-debug.log
+
+# 👉 Docker (named volumes, builds)
+**/Dockerfile
+**/docker-compose.override.yml
+
+# 👉 Build outputs
+wwwroot/
+dist/
+build/
+
+# 👉 Test results
+TestResults/
+
+# 👉 System
+.DS_Store
+Thumbs.db
