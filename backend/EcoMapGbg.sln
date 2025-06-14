@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{07658374-39F5-43A7-B0BB-C24B314FE745}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.Domain", "src\EcoMapGbg.Domain\EcoMapGbg.Domain.csproj", "{8AD1D0F1-2666-4B17-BAC2-2104B7AD5320}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.Application", "src\EcoMapGbg.Application\EcoMapGbg.Application.csproj", "{82761094-CABD-43D4-BC5D-5B8FC82D5E93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.Infrastructure", "src\EcoMapGbg.Infrastructure\EcoMapGbg.Infrastructure.csproj", "{0CA0A4C0-1331-4DA4-A2D1-35BAFB075106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.API", "src\EcoMapGbg.API\EcoMapGbg.API.csproj", "{04ACBD77-8422-418A-B5E9-A7D885912457}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{D618ED2C-B036-4F2B-ABCB-0DD2708B1EF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.UnitTests", "tests\EcoMapGbg.UnitTests\EcoMapGbg.UnitTests.csproj", "{4EF11EA7-4E78-476B-9071-5AF451E69C42}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EcoMapGbg.IntegrationTests", "tests\EcoMapGbg.IntegrationTests\EcoMapGbg.IntegrationTests.csproj", "{01FB746E-130D-47B5-A36C-253A251C2BB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8AD1D0F1-2666-4B17-BAC2-2104B7AD5320}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AD1D0F1-2666-4B17-BAC2-2104B7AD5320}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AD1D0F1-2666-4B17-BAC2-2104B7AD5320}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AD1D0F1-2666-4B17-BAC2-2104B7AD5320}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82761094-CABD-43D4-BC5D-5B8FC82D5E93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82761094-CABD-43D4-BC5D-5B8FC82D5E93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82761094-CABD-43D4-BC5D-5B8FC82D5E93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82761094-CABD-43D4-BC5D-5B8FC82D5E93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CA0A4C0-1331-4DA4-A2D1-35BAFB075106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA0A4C0-1331-4DA4-A2D1-35BAFB075106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA0A4C0-1331-4DA4-A2D1-35BAFB075106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA0A4C0-1331-4DA4-A2D1-35BAFB075106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04ACBD77-8422-418A-B5E9-A7D885912457}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04ACBD77-8422-418A-B5E9-A7D885912457}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04ACBD77-8422-418A-B5E9-A7D885912457}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04ACBD77-8422-418A-B5E9-A7D885912457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF11EA7-4E78-476B-9071-5AF451E69C42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF11EA7-4E78-476B-9071-5AF451E69C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF11EA7-4E78-476B-9071-5AF451E69C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF11EA7-4E78-476B-9071-5AF451E69C42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01FB746E-130D-47B5-A36C-253A251C2BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01FB746E-130D-47B5-A36C-253A251C2BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01FB746E-130D-47B5-A36C-253A251C2BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01FB746E-130D-47B5-A36C-253A251C2BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8AD1D0F1-2666-4B17-BAC2-2104B7AD5320} = {07658374-39F5-43A7-B0BB-C24B314FE745}
+		{82761094-CABD-43D4-BC5D-5B8FC82D5E93} = {07658374-39F5-43A7-B0BB-C24B314FE745}
+		{0CA0A4C0-1331-4DA4-A2D1-35BAFB075106} = {07658374-39F5-43A7-B0BB-C24B314FE745}
+		{04ACBD77-8422-418A-B5E9-A7D885912457} = {07658374-39F5-43A7-B0BB-C24B314FE745}
+		{4EF11EA7-4E78-476B-9071-5AF451E69C42} = {D618ED2C-B036-4F2B-ABCB-0DD2708B1EF9}
+		{01FB746E-130D-47B5-A36C-253A251C2BB6} = {D618ED2C-B036-4F2B-ABCB-0DD2708B1EF9}
+	EndGlobalSection
+EndGlobal
